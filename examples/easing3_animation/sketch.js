@@ -9,13 +9,12 @@ var t = 0.;
 var doclear;
 
 var x, y, tx, ty, x1, y1, px, py;
-
 var osc, rev;
-
 var tb; // textbox
 
 function setup()
 {
+  getAudioContext().suspend();
   createCanvas(800, 600);
   background(255);
   fill(0);
@@ -62,7 +61,7 @@ function draw()
 
   var hs = '';
   hs+= 'p5.Ease(): ' + curstyle + '<br><br>';
-  hs+= 'click around.';
+  hs+= 'click around. pitch is proportional to speed.';
 
   tb.html(hs);
 
@@ -84,6 +83,7 @@ function draw()
 
 function mousePressed()
 {
+  userStartAudio();
   curstyle = random(styles);
   x = px;
   y = py;
